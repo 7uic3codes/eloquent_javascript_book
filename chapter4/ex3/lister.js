@@ -19,14 +19,13 @@ function prepend(element, list) {
 }
 
 function nth(list, counter) {
-    count = 0;
-    for (let node = list; node; node = node.rest) {
-        if (count === counter) {
-            return node.value;
-        }
-        count++;
+    if (!list) {
+        return undefined;
     }
-    return -1;
+    if (counter == 0) {
+        return list.value;
+    }
+    return nth(list.rest, counter - 1)
 }
 
 console.log(arrayToList([10, 20]));
